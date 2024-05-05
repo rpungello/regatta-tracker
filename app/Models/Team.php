@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Team extends Model
@@ -21,5 +22,10 @@ class Team extends Model
     public function teamType(): BelongsTo
     {
         return $this->belongsTo(TeamType::class);
+    }
+
+    public function athletes(): HasMany
+    {
+        return $this->hasMany(Athlete::class);
     }
 }

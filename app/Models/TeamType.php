@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TeamType extends Model
@@ -13,4 +14,9 @@ class TeamType extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function teams(): HasMany
+    {
+        return $this->hasMany(Team::class);
+    }
 }
