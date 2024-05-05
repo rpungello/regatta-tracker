@@ -9,7 +9,7 @@ class BoatClassSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach($this->getDefaultBoatClasses() as $name => $code) {
+        foreach ($this->getDefaultBoatClasses() as $name => $code) {
             BoatClass::create([
                 'name' => $name,
                 'code' => $code,

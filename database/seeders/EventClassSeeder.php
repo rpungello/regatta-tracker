@@ -9,7 +9,7 @@ class EventClassSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach($this->getDefaultEventClasses() as $name => $color) {
+        foreach ($this->getDefaultEventClasses() as $name => $color) {
             EventClass::create([
                 'name' => $name,
                 'color' => $color,

@@ -9,10 +9,10 @@ class GenderSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach($this->getDefaultGenders() as $name => $color) {
+        foreach ($this->getDefaultGenders() as $name => $color) {
             Gender::create([
                 'name' => $name,
-                'color' => $color
+                'color' => $color,
             ]);
         }
     }
@@ -24,7 +24,7 @@ class GenderSeeder extends Seeder
     {
         return [
             'Male' => '6ca0dc',
-            'Female' => 'f8b9d4'
+            'Female' => 'f8b9d4',
         ];
     }
 }
