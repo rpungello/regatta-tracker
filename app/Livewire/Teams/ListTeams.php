@@ -13,6 +13,7 @@ class ListTeams extends Component
         'column' => 'name',
         'direction' => 'asc',
     ];
+
     public function render(): View
     {
         return view('livewire.teams.list-teams', [
