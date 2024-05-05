@@ -23,6 +23,7 @@ class TeamTypeSeeder extends Seeder
             'Youth',
             'Collegiate',
             'Masters',
+            'All',
         ];
     }
 }
