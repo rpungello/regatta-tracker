@@ -1,6 +1,7 @@
 <?php
 
-use App\Livewire\Welcome;
+use App\Livewire\Home;
+use App\Livewire\Teams\ListTeams;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', Welcome::class);
+Route::get('/home', Home::class);
+Route::get('/teams', ListTeams::class)->name('teams.list');

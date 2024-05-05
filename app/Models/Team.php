@@ -28,4 +28,9 @@ class Team extends Model
     {
         return $this->hasMany(Athlete::class);
     }
+
+    public function getCreatedAttribute(): string
+    {
+        return $this->created_at->diffForHumans();
+    }
 }

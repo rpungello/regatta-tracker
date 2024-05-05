@@ -38,7 +38,7 @@
                     <x-menu-separator />
                 @endif
 
-                <x-menu-item title="{{ __('Teams') }}" icon="o-user-group" link="{{ route('teams.index') }}" />
+                <x-menu-item title="{{ __('Teams') }}" icon="o-user-group" link="{{ route('teams.list') }}" />
                 <x-menu-item title="{{ __('Regattas') }}" icon="o-calendar" link="{{ route('regattas.index') }}" />
             </x-menu>
         </x-slot:sidebar>
