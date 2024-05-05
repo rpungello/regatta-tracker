@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             TeamTypeSeeder::class,
+            GenderSeeder::class,
         ]);
     }
 }
