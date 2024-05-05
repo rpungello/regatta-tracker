@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AthleteController;
+use App\Http\Controllers\BoatClassController;
+use App\Http\Controllers\EventClassController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\RegattaController;
 use App\Http\Controllers\TeamController;
@@ -14,3 +16,5 @@ Route::apiResource('genders', GenderController::class);
 Route::apiResource('athletes', AthleteController::class);
 Route::apiResource('venues', VenueController::class);
 Route::apiResource('regattas', RegattaController::class);
+Route::apiResource('event-classes', EventClassController::class);
+Route::apiResource('boat-classes', BoatClassController::class);

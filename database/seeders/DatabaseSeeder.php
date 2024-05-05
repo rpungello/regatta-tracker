@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TeamTypeSeeder::class,
             GenderSeeder::class,
+            EventClassSeeder::class,
+            BoatClassSeeder::class,
         ]);
     }
 }
