@@ -21,7 +21,7 @@ class TeamTypeSeeder extends Seeder
     {
         return [
             'Youth',
-            'College',
+            'Collegiate',
             'Masters',
         ];
     }
