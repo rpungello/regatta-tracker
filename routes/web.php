@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Home;
+use App\Livewire\Teams\CreateTeam;
 use App\Livewire\Teams\ListTeams;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', Home::class);
 Route::get('/teams', ListTeams::class)->name('teams.list');
+Route::get('/teams/create', CreateTeam::class)->name('teams.create');
