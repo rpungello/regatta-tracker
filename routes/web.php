@@ -1,6 +1,9 @@
 <?php
 
 use App\Livewire\Home;
+use App\Livewire\Regattas\CreateRegatta;
+use App\Livewire\Regattas\EditRegatta;
+use App\Livewire\Regattas\ListRegattas;
 use App\Livewire\Teams\CreateTeam;
 use App\Livewire\Teams\EditTeam;
 use App\Livewire\Teams\ListTeams;
@@ -27,4 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/teams', ListTeams::class)->name('teams.list');
     Route::get('/teams/create', CreateTeam::class)->name('teams.create');
     Route::get('/teams/{team}/edit', EditTeam::class)->name('teams.edit');
+    Route::get('/regattas', ListRegattas::class)->name('regattas.list');
+    Route::get('/regattas/create', CreateRegatta::class)->name('regattas.create');
+    Route::get('/regattas/{regatta}/edit', EditRegatta::class)->name('regattas.edit');
 });

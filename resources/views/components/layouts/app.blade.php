@@ -39,7 +39,7 @@
                 @endif
 
                 <x-menu-item title="{{ __('Teams') }}" icon="o-user-group" link="{{ route('teams.list') }}" />
-                <x-menu-item title="{{ __('Regattas') }}" icon="o-calendar" link="{{ route('regattas.index') }}" />
+                <x-menu-item title="{{ __('Regattas') }}" icon="o-calendar" link="{{ route('regattas.list') }}" />
             </x-menu>
         </x-slot:sidebar>
 
