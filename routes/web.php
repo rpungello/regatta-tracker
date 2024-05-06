@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', Home::class);
-Route::get('/teams', ListTeams::class)->name('teams.list');
-Route::get('/teams/create', CreateTeam::class)->name('teams.create');
+Route::get('/', function () {
+    return redirect()->route('home');
+});
+
+// Require authentication
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/home', Home::class)->name('home');
+    Route::get('/teams', ListTeams::class)->name('teams.list');
+    Route::get('/teams/create', CreateTeam::class)->name('teams.create');
+});
