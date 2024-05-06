@@ -18,6 +18,7 @@ class CreateRegatta extends Component
 
     #[Validate(['required', 'date'])]
     public ?string $date = null;
+
     public function render(): View
     {
         return view('livewire.regattas.create-regatta', [
