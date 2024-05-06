@@ -1,5 +1,15 @@
 <div>
-    <x-table :headers="$headers" :rows="$teams" :sort-by="$sortBy"></x-table>
+    <x-table :headers="$headers" :rows="$teams" :sort-by="$sortBy">
+        @scope('cell_name', $team)
+        <span class="badge font-bold" style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }}">
+            {{ $team->name }}
+        </span>
+        @endscope
 
-    <x-button link="{{ route('teams.create') }}" label="{{ __('Create') }}" class="btn-primary" />
+        @scope('actions', $team)
+        <x-button icon="o-pencil" link="{{ route('teams.edit', ['team' => $team]) }}"/>
+        @endscope
+    </x-table>
+
+    <x-button link="{{ route('teams.create') }}" label="{{ __('Create') }}" class="btn-primary"/>
 </div>

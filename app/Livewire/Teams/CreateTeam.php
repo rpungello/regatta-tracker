@@ -16,11 +16,11 @@ class CreateTeam extends Component
     #[Validate('required', 'exists:team_types,id')]
     public int $type = 0;
 
-    #[Validate(['required', 'regex:/[0-9a-fA-F]{6}/'])]
-    public string $brandPrimaryColor = 'ffffff';
+    #[Validate(['regex:/[0-9a-fA-F]{6}/'])]
+    public ?string $brandPrimaryColor = null;
 
-    #[Validate(['required', 'regex:/[0-9a-fA-F]{6}/'])]
-    public string $brandSecondaryColor = '000000';
+    #[Validate(['regex:/[0-9a-fA-F]{6}/'])]
+    public ?string $brandSecondaryColor = null;
 
     public function mount(): void
     {
@@ -41,8 +41,8 @@ class CreateTeam extends Component
         Team::create([
             'name' => $this->name,
             'team_type_id' => $this->type,
-            'brand_primary_color' => $this->brandPrimaryColor,
-            'brand_secondary_color' => $this->brandSecondaryColor,
+            'brand_color_primary' => $this->brandPrimaryColor,
+            'brand_color_secondary' => $this->brandSecondaryColor,
         ]);
 
         $this->redirect(route('teams.list'));

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\TeamController;
 use App\Livewire\Home;
 use App\Livewire\Teams\CreateTeam;
+use App\Livewire\Teams\EditTeam;
 use App\Livewire\Teams\ListTeams;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +27,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', Home::class)->name('home');
     Route::get('/teams', ListTeams::class)->name('teams.list');
     Route::get('/teams/create', CreateTeam::class)->name('teams.create');
+    Route::get('/teams/{team}/edit', EditTeam::class)->name('teams.edit');
 });
