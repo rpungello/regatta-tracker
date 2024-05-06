@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\TeamController;
 use App\Livewire\Home;
 use App\Livewire\Teams\CreateTeam;
 use App\Livewire\Teams\EditTeam;

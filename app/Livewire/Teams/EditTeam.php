@@ -39,7 +39,7 @@ class EditTeam extends Component
             'name' => [
                 'required',
                 Rule::unique('teams')->ignore($this->team->id),
-            ]
+            ],
         ];
     }
 
