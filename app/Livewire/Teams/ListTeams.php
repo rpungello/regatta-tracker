@@ -26,6 +26,7 @@ class ListTeams extends Component
     {
         return [
             ['key' => 'name', 'label' => 'Name'],
+            ['key' => 'teamType.name', 'label' => 'Type', 'sortable' => false],
             ['key' => 'created', 'label' => 'Created', 'sortBy' => 'created_at'],
         ];
     }
