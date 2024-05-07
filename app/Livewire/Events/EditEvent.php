@@ -68,6 +68,12 @@ class EditEvent extends Component
         );
     }
 
+    public function removeEntry(int $entryId): void
+    {
+        $this->event->entries()->find($entryId)->delete();
+        $this->event->refresh();
+    }
+
     private function getEntryHeaders(): array
     {
         return [

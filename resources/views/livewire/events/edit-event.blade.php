@@ -17,5 +17,11 @@
         @scope('cell_team', $entry)
         <x-team-badge :team="$entry->team" />
         @endscope
+
+        @scope('actions', $entry)
+        <x-button icon="o-trash" wire:click="removeEntry({{ $entry->getKey() }})" />
+        @endscope
     </x-table>
+
+    <x-button link="{{ route('events.add-entry', ['event' => $event]) }}" label="{{ __('Add Entry') }}" class="btn-primary"/>
 </div>

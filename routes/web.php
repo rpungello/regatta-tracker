@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Events\AddEntry;
 use App\Livewire\Events\CreateEvent;
 use App\Livewire\Events\EditEvent;
 use App\Livewire\Home;
@@ -37,4 +38,5 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/regattas/{regatta}/edit', EditRegatta::class)->name('regattas.edit');
     Route::get('/events/create', CreateEvent::class)->name('events.create');
     Route::get('/events/{event}/edit', EditEvent::class)->name('events.edit');
+    Route::get('/events/{event}/add-entry', AddEntry::class)->name('events.add-entry');
 });
