@@ -23,8 +23,8 @@ class GenderSeeder extends Seeder
     private function getDefaultGenders(): array
     {
         return [
-            'Male' => '6ca0dc',
-            'Female' => 'f8b9d4',
+            'Men' => '6ca0dc',
+            'Women' => 'f8b9d4',
         ];
     }
 }
