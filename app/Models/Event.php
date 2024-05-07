@@ -22,6 +22,10 @@ class Event extends Model
         'code',
     ];
 
+    protected $casts = [
+        'time' => 'datetime',
+    ];
+
     public function regatta(): BelongsTo
     {
         return $this->belongsTo(Regatta::class);
@@ -45,5 +49,19 @@ class Event extends Model
     public function entries(): HasMany
     {
         return $this->hasMany(Entry::class);
+    }
+
+    public function getDescription(): string
+    {
+        return implode(' ', $this->getDescriptionComponents());
+    }
+
+    public function getDescriptionComponents(): array
+    {
+        return [
+            "{$this->gender->name}'s",
+            $this->eventClass->name,
+            $this->boatClass->code,
+        ];
     }
 }

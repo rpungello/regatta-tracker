@@ -54,7 +54,9 @@ class CreateEvent extends Component
 
     public function save(): void
     {
-        $this->regatta->events()->create($this->validate());
-        $this->redirectRoute('regattas.edit', $this->regatta);
+        $this->redirectRoute(
+            'events.edit',
+            $this->regatta->events()->create($this->validate())
+        );
     }
 }
