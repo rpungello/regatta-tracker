@@ -17,6 +17,7 @@ class Event extends Model
         'gender_id',
         'event_class_id',
         'boat_class_id',
+        'time',
         'name',
         'code',
     ];

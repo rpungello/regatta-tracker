@@ -25,4 +25,6 @@
         <x-button link="{{ route('events.edit', ['event' => $event]) }}" icon="o-pencil"/>
         @endscope
     </x-table>
+
+    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Create') }}" class="btn-primary"/>
 </div>
