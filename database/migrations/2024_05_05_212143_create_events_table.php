@@ -18,15 +18,25 @@ return new class extends Migration
             $table->foreignIdFor(Gender::class)->constrained('genders')->cascadeOnDelete();
             $table->foreignIdFor(EventClass::class)->constrained('event_classes')->cascadeOnDelete();
             $table->foreignIdFor(BoatClass::class)->constrained('boat_classes')->cascadeOnDelete();
-            $table->string('name')->unique();
             $table->string('time');
-            $table->string('code')->nullable()->unique();
+            $table->string('name')->nullable();
+            $table->string('code')->nullable();
             $table->softDeletes();
             $table->timestamps();
 
             $table->index([
                 'regatta_id',
                 'time',
+            ]);
+
+            $table->unique([
+                'regatta_id',
+                'name',
+            ]);
+
+            $table->index([
+                'regatta_id',
+                'code',
             ]);
         });
     }
