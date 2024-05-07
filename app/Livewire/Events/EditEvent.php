@@ -54,6 +54,7 @@ class EditEvent extends Component
             'genders' => Gender::orderBy('name')->get(),
             'eventClasses' => EventClass::orderBy('name')->get(),
             'boatClasses' => BoatClass::orderBy('code')->get(),
+            'entryHeaders' => $this->getEntryHeaders(),
         ]);
     }
 
@@ -65,5 +66,14 @@ class EditEvent extends Component
             'regattas.edit',
             $this->regatta
         );
+    }
+
+    private function getEntryHeaders(): array
+    {
+        return [
+            ['key' => 'team', 'label' => 'Team'],
+            ['key' => 'bow_number', 'label' => 'Bow #'],
+            ['key' => 'priority', 'label' => 'Priority'],
+        ];
     }
 }

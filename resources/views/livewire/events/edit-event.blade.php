@@ -12,4 +12,10 @@
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}" />
     </x-form>
+
+    <x-table :headers="$entryHeaders" :rows="$event->entries">
+        @scope('cell_team', $entry)
+        <x-team-badge :team="$entry->team" />
+        @endscope
+    </x-table>
 </div>
