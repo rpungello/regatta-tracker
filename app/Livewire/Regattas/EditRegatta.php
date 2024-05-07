@@ -26,7 +26,9 @@ class EditRegatta extends Component
 
     public function render(): View
     {
-        return view('livewire.regattas.edit-regatta');
+        return view('livewire.regattas.edit-regatta', [
+            'eventHeaders' => $this->getEventHeaders(),
+        ]);
     }
 
     public function save(): void
@@ -34,5 +36,18 @@ class EditRegatta extends Component
         $this->regatta->update($this->validate());
 
         $this->redirectRoute('regattas.list');
+    }
+
+    private function getEventHeaders(): array
+    {
+        return [
+            ['key' => 'time', 'label' => 'Time'],
+            ['key' => 'name', 'label' => 'Name'],
+            ['key' => 'gender.name', 'label' => 'Gender'],
+            ['key' => 'eventClass.name', 'label' => 'Event Class'],
+            ['key' => 'boatClass.code', 'label' => 'Boat Class'],
+            ['key' => 'code', 'label' => 'Code'],
+            ['key' => 'entries', 'label' => 'Entries'],
+        ];
     }
 }

@@ -19,9 +19,15 @@ return new class extends Migration
             $table->foreignIdFor(EventClass::class)->constrained('event_classes')->cascadeOnDelete();
             $table->foreignIdFor(BoatClass::class)->constrained('boat_classes')->cascadeOnDelete();
             $table->string('name')->unique();
+            $table->string('time');
             $table->string('code')->nullable()->unique();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->index([
+                'regatta_id',
+                'time',
+            ]);
         });
     }
 
