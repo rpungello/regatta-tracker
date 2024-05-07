@@ -25,6 +25,7 @@ class GenderSeeder extends Seeder
         return [
             'Men' => '6ca0dc',
             'Women' => 'f8b9d4',
+            'Non-binary' => 'fff430',
         ];
     }
 }
