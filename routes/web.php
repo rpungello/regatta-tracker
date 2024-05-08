@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\RegattaController;
 use App\Livewire\Entries\EditEntry;
 use App\Livewire\Events\AddEntry;
 use App\Livewire\Events\CreateEvent;

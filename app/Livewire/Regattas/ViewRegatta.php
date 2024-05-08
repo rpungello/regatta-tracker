@@ -19,7 +19,7 @@ class ViewRegatta extends Component
     public function toggleComplete(Entry $entry): void
     {
         $entry->update([
-            'complete' => !$entry->complete,
+            'complete' => ! $entry->complete,
         ]);
     }
 }
