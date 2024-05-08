@@ -4,7 +4,7 @@
     <div class="flex flex-col space-y-4">
         @foreach($regatta->events()->orderBy('time')->get() as $event)
             <x-card>
-                <div class="flex flex-row justify-between">
+                <div class="flex flex-row items-center justify-between">
                     <div class="flex flex-col">
                         @if($event->getPriority() === \App\Enums\Priority::High)
                             <strong class="text-error">{{ $event->getDescription() }}</strong>
