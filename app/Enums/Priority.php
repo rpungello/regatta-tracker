@@ -11,7 +11,7 @@ enum Priority: string
     public static function toSelectArray(): array
     {
         return array_map(
-            fn(self $priority) => ['id' => $priority->value, 'name' => $priority->name],
+            fn (self $priority) => ['id' => $priority->value, 'name' => $priority->name],
             self::cases()
         );
     }
