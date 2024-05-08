@@ -27,10 +27,7 @@ class AddEntry extends Component
 
     public function save(): void
     {
-        $this->event->entries()->create([
-            'team_id' => $this->team_id,
-            'bow_number' => $this->bow_number,
-        ]);
+        $this->event->entries()->create($this->validate());
 
         $this->redirectRoute('events.edit', $this->event);
     }
