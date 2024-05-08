@@ -60,13 +60,14 @@ class Event extends Model
     public function getPriority(): Priority
     {
         $priority = Priority::Low;
-        foreach($this->entries as $entry) {
+        foreach ($this->entries as $entry) {
             if ($entry->priority === Priority::High) {
                 return Priority::High;
             } elseif ($entry->priority === Priority::Normal) {
                 $priority = Priority::Normal;
             }
         }
+
         return $priority;
     }
 
