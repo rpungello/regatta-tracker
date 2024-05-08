@@ -74,7 +74,7 @@ class Event extends Model
     public function getDescriptionComponents(): array
     {
         return [
-            "{$this->gender->name}'s",
+            $this->gender->getPluralName(),
             $this->eventClass->name,
             $this->boatClass->code,
         ];

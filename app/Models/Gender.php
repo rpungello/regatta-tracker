@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Gender extends Model
 {
@@ -13,5 +14,11 @@ class Gender extends Model
     protected $fillable = [
         'name',
         'color',
+        'pluralize',
     ];
+
+    public function getPluralName(): string
+    {
+        return $this->pluralize ? Str::plural($this->name) : $this->name;
+    }
 }
