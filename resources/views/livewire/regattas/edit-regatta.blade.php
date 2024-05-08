@@ -1,6 +1,12 @@
 @php use Carbon\Carbon; @endphp
 <div>
-    <h1 class="text-2xl font-bold mb-4">{{ __('Update Regatta') }}</h1>
+    <div class="text-sm breadcrumbs">
+        <ul>
+            <li><a href="{{ route('regattas.list') }}">{{ __('Regattas') }}</a></li>
+            <li>{{ $regatta->name }}</li>
+        </ul>
+    </div>
+
     <x-form class="max-w-md" wire:submit.prevent="save">
         <x-input wire:model="name" label="{{ __('Name') }}"/>
         <x-input wire:model="date" label="{{ __('Date') }}" type="date"/>
@@ -26,5 +32,6 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Create') }}" class="btn-primary"/>
+    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Create') }}"
+              class="btn-primary"/>
 </div>
