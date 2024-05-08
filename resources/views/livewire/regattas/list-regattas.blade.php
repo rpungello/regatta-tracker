@@ -1,7 +1,7 @@
 <div>
     <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy">
         @scope('cell_date', $regatta)
-        {{ $regatta->date->format('l F j, Y') }}
+        {{ $regatta->date->format('D, F j, Y') }}
         @endscope
 
         @scope('cell_created_at', $regatta)

@@ -27,7 +27,7 @@ class ListRegattas extends Component
         return [
             ['key' => 'name', 'label' => 'Name'],
             ['key' => 'date', 'label' => 'Date'],
-            ['key' => 'created_at', 'label' => 'Created', 'sortBy' => 'created_at'],
+            ['key' => 'created_at', 'label' => 'Created', 'sortBy' => 'created_at', 'class' => 'hidden md:table-cell'],
         ];
     }
 
