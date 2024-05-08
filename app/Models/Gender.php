@@ -17,6 +17,10 @@ class Gender extends Model
         'pluralize',
     ];
 
+    protected $casts = [
+        'pluralize' => 'boolean',
+    ];
+
     public function getPluralName(): string
     {
         return $this->pluralize ? Str::plural($this->name) : $this->name;
