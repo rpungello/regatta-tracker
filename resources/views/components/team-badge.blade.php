@@ -13,7 +13,7 @@
         <span class="mr-2">{{ $bowNumber }}</span>
     @endif
 
-    <div class="flex flex-col font-bold">
+    <div class="flex flex-col items-center font-bold flex-grow">
         <span>{{ $team->name }}</span>
         @isset($notes)
             <span class="text-xs">{{ $notes }}</span>
