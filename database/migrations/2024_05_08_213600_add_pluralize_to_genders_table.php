@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('genders', function (Blueprint $table) {
-            $table->boolean('pluralize')->default(false);
+            $table->boolean('pluralize')->after('color')->default(false);
         });
     }
 
