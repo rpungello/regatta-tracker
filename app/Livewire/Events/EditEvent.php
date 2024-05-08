@@ -80,6 +80,7 @@ class EditEvent extends Component
             ['key' => 'team', 'label' => 'Team'],
             ['key' => 'bow_number', 'label' => 'Bow #'],
             ['key' => 'priority', 'label' => 'Priority'],
+            ['key' => 'notes', 'label' => 'Notes'],
         ];
     }
 }
