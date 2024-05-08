@@ -1,6 +1,6 @@
 @php use App\Enums\Priority; @endphp
 <div>
-    <h1 class="text-center text-2xl">{{ $regatta->name }}</h1>
+    <h1 class="text-center text-2xl mb-4">{{ $regatta->name }}</h1>
 
     <div class="flex flex-col space-y-4">
         @foreach($regatta->events()->orderBy('time')->get() as $event)

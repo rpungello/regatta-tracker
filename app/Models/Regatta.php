@@ -28,6 +28,11 @@ class Regatta extends Model
         return $this->hasMany(Event::class)->orderBy('time');
     }
 
+    public function getShortDateAttribute(): string
+    {
+        return $this->date->format('D, F j, Y');
+    }
+
     protected function casts(): array
     {
         return [

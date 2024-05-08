@@ -1,5 +1,5 @@
 <div>
-    <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy">
+    <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy" class="hidden md:table">
         @scope('cell_date', $regatta)
         {{ $regatta->date->format('D, F j, Y') }}
         @endscope
@@ -16,5 +16,12 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('regattas.create') }}" label="{{ __('Create') }}" class="btn-primary"/>
+    <div class="block md:hidden">
+        @foreach($regattas as $regatta)
+            <x-list-item :item="$regatta" sub-value="short_date" link="{{ route('regattas.view', $regatta) }}" />
+        @endforeach
+    </div>
+
+
+    <x-button link="{{ route('regattas.create') }}" label="{{ __('Create') }}" class="btn-primary hidden md:inline-flex"/>
 </div>
