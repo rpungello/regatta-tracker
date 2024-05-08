@@ -27,7 +27,10 @@
         @endscope
 
         @scope('actions', $entry)
-        <x-button icon="o-trash" wire:click="removeEntry({{ $entry->getKey() }})"/>
+        <div class="flex flex-row">
+            <x-button icon="o-pencil" link="{{ route('entries.edit', $entry) }}" />
+            <x-button icon="o-trash" wire:click="removeEntry({{ $entry->getKey() }})"/>
+        </div>
         @endscope
     </x-table>
 
