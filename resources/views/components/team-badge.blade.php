@@ -4,14 +4,17 @@
     'notes',
 ])
 
-<div class="badge font-bold space-x-1" style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }};">
+<div class="rounded-full px-1.5 py-1 space-x-1 flex flex-row items-center"
+     style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }};">
     @isset($bowNumber)
-        <span>{{ $bowNumber }}</span>
-        <span>|</span>
+        <span class="mr-2">{{ $bowNumber }}</span>
     @endisset
-    <span>{{ $team->name }}</span>
-    @isset($notes)
-        <span>|</span>
-        <span>{{ $notes }}</span>
-    @endisset
+
+    <div class="flex flex-col font-bold">
+        <span>{{ $team->name }}</span>
+        @isset($notes)
+            <span class="text-xs">{{ $notes }}</span>
+        @endisset
+    </div>
+
 </div>

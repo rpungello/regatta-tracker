@@ -13,7 +13,7 @@
                         @endif
                         <span class="opacity-60">{{ $event->time->format('g:ia') }}</span>
                     </div>
-                    <div class="flex flex-col">
+                    <div class="flex flex-col space-y-2">
                         @foreach($event->entries()->orderBy('bow_number')->get() as $entry)
                             <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number" :notes="$entry->notes" />
                         @endforeach
