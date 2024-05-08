@@ -9,7 +9,10 @@
         @endscope
 
         @scope('actions', $regatta)
-        <x-button icon="o-pencil" link="{{ route('regattas.edit', ['regatta' => $regatta]) }}"/>
+        <div class="flex flex-row">
+            <x-button icon="o-eye" link="{{ route('regattas.view', ['regatta' => $regatta]) }}"/>
+            <x-button icon="o-pencil" link="{{ route('regattas.edit', ['regatta' => $regatta]) }}"/>
+        </div>
         @endscope
     </x-table>
 

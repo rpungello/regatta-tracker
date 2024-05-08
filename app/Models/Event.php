@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Priority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -54,6 +55,19 @@ class Event extends Model
     public function getDescription(): string
     {
         return implode(' ', $this->getDescriptionComponents());
+    }
+
+    public function getPriority(): Priority
+    {
+        $priority = Priority::Low;
+        foreach($this->entries as $entry) {
+            if ($entry->priority === Priority::High) {
+                return Priority::High;
+            } elseif ($entry->priority === Priority::Normal) {
+                $priority = Priority::Normal;
+            }
+        }
+        return $priority;
     }
 
     public function getDescriptionComponents(): array

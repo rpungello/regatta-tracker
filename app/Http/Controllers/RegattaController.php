@@ -22,6 +22,11 @@ class RegattaController extends Controller
         return $regatta;
     }
 
+    public function view(Regatta $regatta)
+    {
+        return response()->view('regatta', compact('regatta'));
+    }
+
     public function update(RegattaRequest $request, Regatta $regatta)
     {
         $regatta->update($request->validated());
