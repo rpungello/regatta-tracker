@@ -15,6 +15,7 @@ class Entry extends Model
     protected $casts = [
         'bow_number' => 'integer',
         'priority' => Priority::class,
+        'complete' => 'boolean',
     ];
 
     protected $fillable = [
@@ -23,6 +24,7 @@ class Entry extends Model
         'bow_number',
         'priority',
         'notes',
+        'complete',
     ];
 
     public function event(): BelongsTo

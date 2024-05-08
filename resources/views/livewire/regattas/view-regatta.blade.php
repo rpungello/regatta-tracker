@@ -1,0 +1,29 @@
+@php use App\Enums\Priority; @endphp
+<div>
+    <h1 class="text-center text-2xl">{{ $regatta->name }}</h1>
+
+    <div class="flex flex-col space-y-4">
+        @foreach($regatta->events()->orderBy('time')->get() as $event)
+            <x-card>
+                <div class="flex flex-row items-center justify-between">
+                    <div class="flex flex-col">
+                        @if($event->getPriority() === Priority::High)
+                            <strong class="text-error">{{ $event->getDescription() }}</strong>
+                        @else
+                            <span>{{ $event->getDescription() }}</span>
+                        @endif
+                        <span class="opacity-60">{{ $event->time->format('g:ia') }}</span>
+                    </div>
+                    <div class="flex flex-col space-y-2">
+                        @foreach($event->entries()->orderBy('bow_number')->get() as $entry)
+                            <a class="cursor-pointer" wire:click="toggleComplete({{ $entry->getKey() }})">
+                                <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number"
+                                              :notes="$entry->notes" :complete="$entry->complete" />
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </x-card>
+        @endforeach
+    </div>
+</div>
