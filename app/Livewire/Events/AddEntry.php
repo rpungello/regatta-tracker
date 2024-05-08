@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Events;
 
+use App\Enums\Priority;
 use App\Models\Event;
 use App\Models\Team;
 use Illuminate\Contracts\View\View;
@@ -18,13 +19,22 @@ class AddEntry extends Component
     #[Validate(['required', 'integer', 'min:1'])]
     public int $bow_number;
 
+    #[Validate(['required'])]
+    public Priority $priority;
+
     #[Validate(['string', 'nullable'])]
     public ?string $notes;
+
+    public function mount(): void
+    {
+        $this->priority = Priority::Normal;
+    }
 
     public function render(): View
     {
         return view('livewire.events.add-entry', [
             'teams' => Team::orderBy('name')->get(),
+            'priorities' => Priority::toSelectArray(),
         ]);
     }
 

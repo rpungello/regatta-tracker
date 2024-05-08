@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Entries;
 
+use App\Enums\Priority;
 use App\Models\Entry;
 use App\Models\Team;
 use Illuminate\Contracts\View\View;
@@ -18,6 +19,9 @@ class EditEntry extends Component
     #[Validate(['required', 'integer', 'min:1'])]
     public int $bow_number;
 
+    #[Validate(['required'])]
+    public Priority $priority;
+
     #[Validate(['string', 'nullable'])]
     public ?string $notes;
 
@@ -25,6 +29,7 @@ class EditEntry extends Component
     {
         $this->team_id = $this->entry->team_id;
         $this->bow_number = $this->entry->bow_number;
+        $this->priority = $this->entry->priority;
         $this->notes = $this->entry->notes;
     }
 
@@ -32,6 +37,7 @@ class EditEntry extends Component
     {
         return view('livewire.entries.edit-entry', [
             'teams' => Team::orderBy('name')->get(),
+            'priorities' => Priority::toSelectArray(),
         ]);
     }
 
