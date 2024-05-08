@@ -5,7 +5,7 @@
     'complete' => false,
 ])
 
-<div class="rounded-full px-2.5 py-1.5 space-x-1 flex flex-row items-center @if($complete) opacity-40 @endif"
+<div class="rounded-xl px-2.5 py-1.5 space-x-1 flex flex-row items-center @if($complete) opacity-40 @endif"
      style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }};">
     @if($complete)
         <x-icon name="o-check-badge" />
