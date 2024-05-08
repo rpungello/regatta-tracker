@@ -21,6 +21,8 @@ class Entry extends Model
         'event_id',
         'team_id',
         'bow_number',
+        'priority',
+        'notes',
     ];
 
     public function event(): BelongsTo

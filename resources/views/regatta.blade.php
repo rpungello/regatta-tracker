@@ -15,7 +15,7 @@
                     </div>
                     <div class="flex flex-col">
                         @foreach($event->entries()->orderBy('bow_number')->get() as $entry)
-                            <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number"/>
+                            <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number" :notes="$entry->notes" />
                         @endforeach
                     </div>
                 </div>

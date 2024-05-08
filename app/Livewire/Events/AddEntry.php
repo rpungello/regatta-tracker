@@ -18,6 +18,9 @@ class AddEntry extends Component
     #[Validate(['required', 'integer', 'min:1'])]
     public int $bow_number;
 
+    #[Validate(['string', 'nullable'])]
+    public ?string $notes;
+
     public function render(): View
     {
         return view('livewire.events.add-entry', [

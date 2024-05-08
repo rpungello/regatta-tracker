@@ -18,10 +18,14 @@ class EditEntry extends Component
     #[Validate(['required', 'integer', 'min:1'])]
     public int $bow_number;
 
+    #[Validate(['string', 'nullable'])]
+    public ?string $notes;
+
     public function mount(): void
     {
         $this->team_id = $this->entry->team_id;
         $this->bow_number = $this->entry->bow_number;
+        $this->notes = $this->entry->notes;
     }
 
     public function render(): View
