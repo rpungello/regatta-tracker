@@ -1,8 +1,6 @@
 <?php
 
-use App\Livewire\Athletes\CreateAthlete;
 use App\Livewire\Athletes\EditAthlete;
-use App\Livewire\Athletes\ListAthletes;
 use App\Livewire\Entries\EditEntry;
 use App\Livewire\EventClasses\CreateEventClass;
 use App\Livewire\EventClasses\EditEventClass;
