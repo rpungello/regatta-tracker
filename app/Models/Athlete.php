@@ -11,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class Athlete extends Model
 {
-    use HasFactory, SoftDeletes, Searchable;
+    use HasFactory, Searchable, SoftDeletes;
 
     protected $fillable = [
         'team_id',
