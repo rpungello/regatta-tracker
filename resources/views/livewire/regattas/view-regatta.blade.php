@@ -5,7 +5,7 @@
     </a>
 
     <div class="flex flex-col space-y-4">
-        @foreach($regatta->events()->orderBy('time')->get() as $event)
+        @foreach($regatta->events()->orderBy('time')->orderBy('id')->get() as $event)
             <x-card>
                 <div class="flex flex-row items-center justify-between">
                     <div class="flex flex-col">
@@ -31,7 +31,7 @@
             </x-card>
 
             @if(! $event->isLastEvent())
-                <div class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @endif">
+                <div class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @elseif ($event->getMinutesUntilNextEvent() === 0) text-warning @endif">
                     <x-icon name="o-clock" />
                     <span>{{ $event->getTimeUntilNextEvent() }}</span>
                 </div>

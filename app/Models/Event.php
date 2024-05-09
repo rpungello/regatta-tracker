@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\Priority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -57,6 +58,15 @@ class Event extends Model
         return implode(' ', $this->getDescriptionComponents());
     }
 
+    public function getDescriptionComponents(): array
+    {
+        return [
+            $this->gender->getPluralName(),
+            $this->eventClass->name,
+            $this->boatClass->code,
+        ];
+    }
+
     public function getPriority(): Priority
     {
         $priority = Priority::Low;
@@ -71,15 +81,6 @@ class Event extends Model
         return $priority;
     }
 
-    public function getDescriptionComponents(): array
-    {
-        return [
-            $this->gender->getPluralName(),
-            $this->eventClass->name,
-            $this->boatClass->code,
-        ];
-    }
-
     public function isLastEvent(): bool
     {
         return $this->regatta->events()->where('time', '>', $this->time)->doesntExist();
@@ -88,7 +89,7 @@ class Event extends Model
     public function getTimeUntilNextEvent(): ?string
     {
         /** @var Event|null $nextEvent */
-        $nextEvent = $this->regatta->events()->where('time', '>', $this->time)->orderBy('time')->first();
+        $nextEvent = $this->getNextEvent();
 
         if (is_null($nextEvent)) {
             return null;
@@ -97,10 +98,41 @@ class Event extends Model
         return $this->time->diffForHumans($nextEvent->time, true, parts: 2);
     }
 
+    /**
+     * @return Event|null
+     */
+    private function getNextEvent(): ?Event
+    {
+        if ($this->hasParallelEvents()) {
+            try {
+                return $this
+                    ->regatta
+                    ->events()
+                    ->where('time', '=', $this->time)
+                    ->where('id', '>', $this->getKey())
+                    ->orderBy('time')
+                    ->firstOrFail();
+            } catch (ModelNotFoundException) {
+            }
+        }
+
+        return $this
+            ->regatta
+            ->events()
+            ->where('time', '>', $this->time)
+            ->orderBy('time')
+            ->firstOrFail();
+    }
+
+    public function hasParallelEvents(): bool
+    {
+        return $this->regatta->events()->where('time', '=', $this->time)->count() > 1;
+    }
+
     public function getMinutesUntilNextEvent(): ?int
     {
         /** @var Event|null $nextEvent */
-        $nextEvent = $this->regatta->events()->where('time', '>', $this->time)->orderBy('time')->first();
+        $nextEvent = $this->getNextEvent();
 
         if (is_null($nextEvent)) {
             return null;
