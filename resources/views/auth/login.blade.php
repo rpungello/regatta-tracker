@@ -7,6 +7,7 @@
 
                 <x-input label="Email" type="email" name="email" error-field="email"/>
                 <x-input label="Password" type="password" name="password" error-field="password"/>
+                <x-checkbox label="Remember me" name="remember" />
 
                 <x-button label="Log In" class="btn-primary" type="submit"/>
             </x-form>
