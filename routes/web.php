@@ -4,7 +4,11 @@ use App\Livewire\Entries\EditEntry;
 use App\Livewire\Events\AddEntry;
 use App\Livewire\Events\CreateEvent;
 use App\Livewire\Events\EditEvent;
+use App\Livewire\Genders\CreateGender;
+use App\Livewire\Genders\EditGender;
+use App\Livewire\Genders\ListGenders;
 use App\Livewire\Home;
+use App\Livewire\ManageGenders;
 use App\Livewire\Regattas\CreateRegatta;
 use App\Livewire\Regattas\EditRegatta;
 use App\Livewire\Regattas\ListRegattas;
@@ -32,6 +36,9 @@ Route::get('/', function () {
 // Require authentication
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', Home::class)->name('home');
+    Route::get('/genders', ListGenders::class)->name('genders.list');
+    Route::get('/genders/create', CreateGender::class)->name('genders.create');
+    Route::get('/genders/{gender}/edit', EditGender::class)->name('genders.edit');
     Route::get('/teams', ListTeams::class)->name('teams.list');
     Route::get('/teams/create', CreateTeam::class)->name('teams.create');
     Route::get('/teams/{team}/edit', EditTeam::class)->name('teams.edit');
