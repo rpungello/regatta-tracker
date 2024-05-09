@@ -1,9 +1,8 @@
 @php use App\Enums\Priority; @endphp
 <div>
-    <header class="flex flex-row items-center justify-center mb-4">
-        <h1 class="text-2xl">{{ $regatta->name }}</h1>
-        <x-button class="opacity-50" link="{{ route('regattas.edit', $regatta) }}" icon="o-pencil" />
-    </header>
+    <a class="block mb-4" href="{{ route('regattas.edit', $regatta) }}">
+        <h1 class="text-2xl text-center">{{ $regatta->name }}</h1>
+    </a>
 
     <div class="flex flex-col space-y-4">
         @foreach($regatta->events()->orderBy('time')->get() as $event)
