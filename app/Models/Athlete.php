@@ -27,4 +27,9 @@ class Athlete extends Model
     {
         return $this->belongsTo(Gender::class);
     }
+
+    public function getNameAttribute(): string
+    {
+        return "$this->name_first $this->name_last";
+    }
 }

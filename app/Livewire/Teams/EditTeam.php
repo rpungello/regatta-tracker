@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Teams;
 
+use App\Models\Athlete;
 use App\Models\Team;
 use App\Models\TeamType;
 use Illuminate\Contracts\View\View;
@@ -47,6 +48,7 @@ class EditTeam extends Component
     {
         return view('livewire.teams.edit-team', [
             'types' => TeamType::all(),
+            'athleteHeaders' => $this->getAthleteHeaders(),
         ]);
     }
 
@@ -62,5 +64,18 @@ class EditTeam extends Component
         ]);
 
         $this->redirect(route('teams.list'));
+    }
+
+    private function getAthleteHeaders(): array
+    {
+        return [
+            ['key' => 'name', 'label' => 'Name'],
+            ['key' => 'gender.name', 'label' => 'Gender'],
+        ];
+    }
+
+    public function removeAthlete(Athlete $athlete): void
+    {
+        $this->team->athletes()->where('id', '=', $athlete->getKey())->delete();
     }
 }
