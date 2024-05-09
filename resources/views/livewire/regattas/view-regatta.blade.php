@@ -1,6 +1,9 @@
 @php use App\Enums\Priority; @endphp
 <div>
-    <h1 class="text-center text-2xl mb-4">{{ $regatta->name }}</h1>
+    <header class="flex flex-row items-center justify-center mb-4">
+        <h1 class="text-2xl">{{ $regatta->name }}</h1>
+        <x-button class="opacity-50" link="{{ route('regattas.edit', $regatta) }}" icon="o-pencil" />
+    </header>
 
     <div class="flex flex-col space-y-4">
         @foreach($regatta->events()->orderBy('time')->get() as $event)
@@ -18,7 +21,7 @@
                         @foreach($event->entries()->orderBy('bow_number')->get() as $entry)
                             <a class="cursor-pointer" wire:click="toggleComplete({{ $entry->getKey() }})">
                                 <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number"
-                                              :notes="$entry->notes" :complete="$entry->complete" />
+                                              :notes="$entry->notes" :complete="$entry->complete"/>
                             </a>
                         @endforeach
                     </div>
