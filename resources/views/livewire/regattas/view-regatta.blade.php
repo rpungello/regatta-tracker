@@ -15,6 +15,9 @@
                         @else
                             <span>{{ $event->getDescription() }}</span>
                         @endif
+                        @isset($event->name)
+                            <span class="opacity-60">{{ $event->name }}</span>
+                        @endisset
                         <span class="opacity-60">{{ $event->time->format('g:ia') }}</span>
                     </div>
                     <div class="flex flex-col space-y-2">
