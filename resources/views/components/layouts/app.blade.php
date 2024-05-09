@@ -41,6 +41,7 @@
                 <x-menu-item title="{{ __('Teams') }}" icon="o-user-group" link="{{ route('teams.list') }}" />
                 <x-menu-item title="{{ __('Regattas') }}" icon="o-calendar" link="{{ route('regattas.list') }}" />
                 <x-menu-item title="{{ __('Genders') }}" icon="o-user-plus" link="{{ route('genders.list') }}" />
+                <x-menu-item title="{{ __('Event Classes') }}" icon="o-adjustments-horizontal" link="{{ route('event-classes.list') }}" />
             </x-menu>
         </x-slot:sidebar>
 
