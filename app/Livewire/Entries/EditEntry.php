@@ -28,7 +28,7 @@ class EditEntry extends Component
     #[Validate(['string', 'nullable'])]
     public ?string $notes;
 
-    public int $newAthleteId = 0;
+    public array $athleteIds = [];
 
     public Collection $athleteSearch;
 
@@ -38,7 +38,12 @@ class EditEntry extends Component
         $this->bow_number = $this->entry->bow_number;
         $this->priority = $this->entry->priority;
         $this->notes = $this->entry->notes;
-        $this->athleteSearch = Athlete::orderBy('name_last')->orderBy('name_first')->take(20)->get();
+        $this->athleteSearch = $this->entry->team->athletes()
+            ->orderBy('name_last')
+            ->orderBy('name_first')
+            ->get();
+
+        $this->athleteIds = $this->entry->athletes()->pluck('id')->toArray();
     }
 
     public function render(): View
@@ -52,6 +57,7 @@ class EditEntry extends Component
     public function search(string $name): void
     {
         $this->athleteSearch = Athlete::search($name)->get();
+        $this->athleteSearch = $this->athleteSearch->merge(Athlete::whereIn('id', $this->athleteIds)->get());
     }
 
     public function save(): void
@@ -61,20 +67,8 @@ class EditEntry extends Component
         $this->redirectRoute('events.edit', $this->entry->event);
     }
 
-    public function removeAthlete(Athlete $athlete): void
+    public function updatedAthleteIds(): void
     {
-        $this->entry->athletes()->detach($athlete);
-    }
-
-    public function updatedNewAthleteId(): void
-    {
-        try {
-            if ($this->newAthleteId > 0) {
-                $this->entry->athletes()->attach($this->newAthleteId);
-            }
-        } catch (UniqueConstraintViolationException) {
-        } finally {
-            $this->newAthleteId = 0;
-        }
+        $this->entry->athletes()->sync($this->athleteIds);
     }
 }
