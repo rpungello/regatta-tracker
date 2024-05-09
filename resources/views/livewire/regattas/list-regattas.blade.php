@@ -1,4 +1,10 @@
 <div>
+    <div class="text-sm breadcrumbs">
+        <ul>
+            <li>{{ __('Regattas') }}</li>
+        </ul>
+    </div>
+
     <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy" class="hidden md:table">
         @scope('cell_date', $regatta)
         {{ $regatta->date->format('D, F j, Y') }}

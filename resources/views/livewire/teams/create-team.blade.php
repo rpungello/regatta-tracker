@@ -1,5 +1,11 @@
 <div>
-    <h1 class="text-2xl font-bold mb-4">{{ __('Create Team') }}</h1>
+    <div class="text-sm breadcrumbs">
+        <ul>
+            <li><a href="{{ route('teams.list') }}">{{ __('Teams') }}</a></li>
+            <li>{{ __('Create') }}</li>
+        </ul>
+    </div>
+
     <x-form class="max-w-md" wire:submit.prevent="save">
         <x-input wire:model="name" label="{{ __('Name') }}" />
         <x-select wire:model="type" :options="$types" label="{{ __('Type') }}" />

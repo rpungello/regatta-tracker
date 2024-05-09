@@ -1,4 +1,10 @@
 <div>
+    <div class="text-sm breadcrumbs">
+        <ul>
+            <li>{{ __('Teams') }}</li>
+        </ul>
+    </div>
+
     <x-table :headers="$headers" :rows="$teams" :sort-by="$sortBy">
         @scope('cell_name', $team)
         <span class="badge font-bold" style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }}">
