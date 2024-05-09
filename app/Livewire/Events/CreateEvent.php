@@ -56,7 +56,12 @@ class CreateEvent extends Component
     {
         $this->redirectRoute(
             'events.edit',
-            $this->regatta->events()->create($this->validate())
+            $this->regatta->events()->create(
+                array_merge(
+                    $this->validate(),
+                    ['time' => "{$this->regatta->date->format('Y-m-d')} $this->time"]
+                )
+            )
         );
     }
 }
