@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             GenderSeeder::class,
             EventClassSeeder::class,
             BoatClassSeeder::class,
+            RaceTypeSeeder::class,
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire\Events;
 use App\Models\BoatClass;
 use App\Models\EventClass;
 use App\Models\Gender;
+use App\Models\RaceType;
 use App\Models\Regatta;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Validate;
@@ -22,8 +23,14 @@ class CreateEvent extends Component
     #[Validate(['string', 'nullable'])]
     public ?string $code = null;
 
+    #[Validate(['string', 'nullable'])]
+    public ?string $distance = null;
+
     #[Validate(['required', 'date_format:H:i'])]
     public string $time = '';
+
+    #[Validate(['nullable', 'exists:race_types,id'])]
+    public ?int $race_type_id;
 
     #[Validate(['required', 'exists:genders,id'])]
     public int $gender_id;
@@ -46,6 +53,7 @@ class CreateEvent extends Component
     public function render(): View
     {
         return view('livewire.events.create-event', [
+            'raceTypes' => RaceType::orderBy('name')->get(),
             'genders' => Gender::orderBy('name')->get(),
             'eventClasses' => EventClass::orderBy('name')->get(),
             'boatClasses' => BoatClass::orderBy('code')->get(),

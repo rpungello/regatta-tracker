@@ -9,6 +9,8 @@
 
     <x-form class="max-w-md" wire:submit.prevent="save">
         <x-input wire:model="time" label="{{ __('Time') }}" type="time"/>
+        <x-select wire:model="race_type_id" :options="$raceTypes" label="{{ __('Race Type') }}"
+                  placeholder="- Select a Type -"/>
         <x-select wire:model="gender_id" :options="$genders" label="{{ __('Gender') }}"
                   placeholder="- Select a Gender -"/>
         <x-select wire:model="event_class_id" :options="$eventClasses" label="{{ __('Event Class') }}"
@@ -17,6 +19,7 @@
                   label="{{ __('Boat Class') }}" placeholder="- Select a Class -"/>
         <x-input wire:model="name" label="{{ __('Name') }}"/>
         <x-input wire:model="code" label="{{ __('Code') }}"/>
+        <x-input wire:model="distance" label="{{ __('Distance') }}" suffix="m" />
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
     </x-form>

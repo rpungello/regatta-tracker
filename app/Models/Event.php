@@ -16,21 +16,29 @@ class Event extends Model
 
     protected $fillable = [
         'regatta_id',
+        'race_type_id',
         'gender_id',
         'event_class_id',
         'boat_class_id',
         'time',
         'name',
         'code',
+        'distance',
     ];
 
     protected $casts = [
         'time' => 'datetime',
+        'distance' => 'int',
     ];
 
     public function regatta(): BelongsTo
     {
         return $this->belongsTo(Regatta::class);
+    }
+
+    public function raceType(): BelongsTo
+    {
+        return $this->belongsTo(RaceType::class);
     }
 
     public function gender(): BelongsTo

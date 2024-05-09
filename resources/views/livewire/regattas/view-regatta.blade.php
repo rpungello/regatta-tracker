@@ -21,6 +21,12 @@
                             <span class="opacity-60">{{ $event->name }}</span>
                         @endisset
                         <span class="opacity-60">{{ $event->time->format('g:ia') }}</span>
+                        @isset($event->race_type_id)
+                            <span class="opacity-60">{{ $event->raceType?->name }}</span>
+                        @endisset
+                        @isset($event->distance)
+                            <span class="opacity-60">{{ $event->distance }}m</span>
+                        @endisset
                     </div>
                     <div class="flex flex-col space-y-2">
                         @foreach($event->entries()->orderBy('bow_number')->get() as $entry)

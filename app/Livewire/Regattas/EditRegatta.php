@@ -42,11 +42,13 @@ class EditRegatta extends Component
     {
         return [
             ['key' => 'time', 'label' => 'Time'],
-            ['key' => 'name', 'label' => 'Name'],
+            ['key' => 'name', 'label' => 'Name', 'class' => 'hidden xl:table-cell'],
+            ['key' => 'raceType.name', 'label' => 'Race Type', 'class' => 'hidden lg:table-cell'],
             ['key' => 'gender.name', 'label' => 'Gender'],
             ['key' => 'eventClass.name', 'label' => 'Event Class'],
             ['key' => 'boatClass.code', 'label' => 'Boat Class'],
-            ['key' => 'code', 'label' => 'Code'],
+            ['key' => 'code', 'label' => 'Code', 'class' => 'hidden xl:table-cell'],
+            ['key' => 'distance', 'label' => 'Distance', 'class' => 'hidden xl:table-cell'],
             ['key' => 'entries', 'label' => 'Entries'],
         ];
     }
