@@ -17,7 +17,7 @@
 
     <x-button class="btn-primary" link="{{ route('teams.add-athlete', ['team' => $team]) }}" label="Add Athlete"/>
 
-    <x-table :headers="$athleteHeaders" :rows="$team->athletes()->orderBy('name_last')->orderBy('name_first')">
+    <x-table :headers="$athleteHeaders" :rows="$team->athletes()->orderBy('name_last')->orderBy('name_first')->get()">
         @scope('actions', $athlete)
         <div class="flex flex-row">
             <x-button icon="o-pencil" link="{{ route('athletes.edit', $athlete) }}"/>
