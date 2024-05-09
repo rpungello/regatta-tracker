@@ -1,8 +1,11 @@
 @php use App\Enums\Priority; @endphp
 <div>
-    <a class="block mb-4" href="{{ route('regattas.edit', $regatta) }}">
-        <h1 class="text-2xl text-center">{{ $regatta->name }}</h1>
-    </a>
+    <div class="flex flex-col items-center mb-4">
+        <a href="{{ route('regattas.edit', $regatta) }}">
+            <h1 class="text-2xl text-center">{{ $regatta->name }}</h1>
+        </a>
+        <h2 class="opacity-50">{{ $regatta->date->format('l, F j, Y') }}</h2>
+    </div>
 
     <div class="flex flex-col space-y-4">
         @foreach($regatta->events()->orderBy('time')->orderBy('id')->get() as $event)
@@ -30,8 +33,9 @@
             </x-card>
 
             @if(! $event->isLastEvent())
-                <div class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @elseif ($event->getMinutesUntilNextEvent() === 0) text-warning @endif">
-                    <x-icon name="o-clock" />
+                <div
+                    class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @elseif ($event->getMinutesUntilNextEvent() === 0) text-warning @endif">
+                    <x-icon name="o-clock"/>
                     <span>{{ $event->getTimeUntilNextEvent() }}</span>
                 </div>
             @endif
