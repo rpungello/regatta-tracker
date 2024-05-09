@@ -96,4 +96,16 @@ class Event extends Model
 
         return $this->time->diffForHumans($nextEvent->time, true, parts: 2);
     }
+
+    public function getMinutesUntilNextEvent(): ?int
+    {
+        /** @var Event|null $nextEvent */
+        $nextEvent = $this->regatta->events()->where('time', '>', $this->time)->orderBy('time')->first();
+
+        if (is_null($nextEvent)) {
+            return null;
+        }
+
+        return $this->time->diffInMinutes($nextEvent->time);
+    }
 }

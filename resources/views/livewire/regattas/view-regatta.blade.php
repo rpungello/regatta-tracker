@@ -31,7 +31,7 @@
             </x-card>
 
             @if(! $event->isLastEvent())
-                <div class="flex flex-row items-center space-x-2">
+                <div class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @endif">
                     <x-icon name="o-clock" />
                     <span>{{ $event->getTimeUntilNextEvent() }}</span>
                 </div>
