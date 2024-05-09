@@ -98,9 +98,6 @@ class Event extends Model
         return $this->time->diffForHumans($nextEvent->time, true, parts: 2);
     }
 
-    /**
-     * @return Event|null
-     */
     private function getNextEvent(): ?Event
     {
         if ($this->hasParallelEvents()) {
