@@ -6,7 +6,7 @@
         </ul>
     </div>
 
-    <x-form class="max-w-md" wire:submit.prevent="save">
+    <x-form class="max-w-md mb-4" wire:submit.prevent="save">
         <x-input wire:model="name" label="{{ __('Name') }}"/>
         <x-select wire:model="type" :options="$types" label="{{ __('Type') }}"/>
         <x-input wire:model="brandPrimaryColor" label="{{ __('Primary Color') }}" prefix="#"/>
@@ -14,6 +14,8 @@
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
     </x-form>
+
+    <x-button class="btn-primary" link="{{ route('teams.add-athlete', ['team' => $team]) }}" label="Add Athlete"/>
 
     <x-table :headers="$athleteHeaders" :rows="$team->athletes">
         @scope('actions', $athlete)
