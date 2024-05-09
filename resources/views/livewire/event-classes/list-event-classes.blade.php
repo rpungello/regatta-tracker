@@ -5,7 +5,7 @@
         </ul>
     </div>
 
-    <x-table :headers="$headers" :rows="$classes" class="hidden md:table">
+    <x-table :headers="$headers" :rows="$classes">
         @scope('cell_created_at', $class)
         {{ $class->created_at->diffForHumans() }}
         @endscope
