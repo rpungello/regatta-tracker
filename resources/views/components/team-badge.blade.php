@@ -17,7 +17,7 @@
         <span class="text-center">{{ $team->name }}</span>
         @isset($entry)
             @foreach($entry->athletes as $athlete)
-                <span class="text-xs opacity-50">{{ $athlete->name }}</span>
+                <span class="text-xs opacity-50 text-center">{{ $athlete->name }}</span>
             @endforeach
         @endisset
     </div>
