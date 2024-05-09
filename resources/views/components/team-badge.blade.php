@@ -14,9 +14,9 @@
     @endif
 
     <div class="flex flex-col items-center font-bold flex-grow">
-        <span>{{ $team->name }}</span>
+        <span class="text-center">{{ $team->name }}</span>
         @isset($notes)
-            <span class="text-xs">{{ $notes }}</span>
+            <span class="text-xs text-center">{{ $notes }}</span>
         @endisset
     </div>
 
