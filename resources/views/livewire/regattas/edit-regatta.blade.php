@@ -25,7 +25,7 @@
         @scope('cell_entries', $event)
         <div class="flex flex-col space-y-2">
             @foreach($event->entries as $entry)
-                <x-team-badge :team="$entry->team" :notes="$entry->notes"/>
+                <x-team-badge :team="$entry->team" :entry="$entry" />
             @endforeach
         </div>
         @endscope

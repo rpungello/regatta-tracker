@@ -6,6 +6,7 @@ use App\Enums\Priority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Entry extends Model
@@ -35,5 +36,10 @@ class Entry extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);
+    }
+
+    public function athletes(): BelongsToMany
+    {
+        return $this->belongsToMany(Athlete::class);
     }
 }

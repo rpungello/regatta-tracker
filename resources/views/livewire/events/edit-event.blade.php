@@ -23,7 +23,7 @@
 
     <x-table :headers="$entryHeaders" :rows="$event->entries">
         @scope('cell_team', $entry)
-        <x-team-badge :team="$entry->team"/>
+        <x-team-badge :team="$entry->team" :entry="$entry" />
         @endscope
 
         @scope('actions', $entry)

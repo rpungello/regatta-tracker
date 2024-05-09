@@ -22,8 +22,7 @@
                     <div class="flex flex-col space-y-2">
                         @foreach($event->entries()->orderBy('bow_number')->get() as $entry)
                             <a class="cursor-pointer" wire:click="toggleComplete({{ $entry->getKey() }})">
-                                <x-team-badge :team="$entry->team" :bow-number="$entry->bow_number"
-                                              :notes="$entry->notes" :complete="$entry->complete"/>
+                                <x-team-badge :team="$entry->team" :entry="$entry"/>
                             </a>
                         @endforeach
                     </div>

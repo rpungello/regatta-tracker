@@ -8,8 +8,10 @@
         "php": "^8.2",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.0",
+        "laravel/scout": "^10.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
+        "meilisearch/meilisearch-php": "^1.8",
         "robsontenorio/mary": "^1.30"
     },
     "require-dev": {
