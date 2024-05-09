@@ -29,6 +29,13 @@
                     </div>
                 </div>
             </x-card>
+
+            @if(! $event->isLastEvent())
+                <div class="flex flex-row items-center space-x-2">
+                    <x-icon name="o-clock" />
+                    <span>{{ $event->getTimeUntilNextEvent() }}</span>
+                </div>
+            @endif
         @endforeach
     </div>
 </div>

@@ -79,4 +79,21 @@ class Event extends Model
             $this->boatClass->code,
         ];
     }
+
+    public function isLastEvent(): bool
+    {
+        return $this->regatta->events()->where('time', '>', $this->time)->doesntExist();
+    }
+
+    public function getTimeUntilNextEvent(): ?string
+    {
+        /** @var Event|null $nextEvent */
+        $nextEvent = $this->regatta->events()->where('time', '>', $this->time)->orderBy('time')->first();
+
+        if (is_null($nextEvent)) {
+            return null;
+        }
+
+        return $this->time->diffForHumans($nextEvent->time, true, parts: 2);
+    }
 }
