@@ -9,7 +9,7 @@ class RaceTypeSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach($this->getDefaultRaceTypes() as $name) {
+        foreach ($this->getDefaultRaceTypes() as $name) {
             RaceType::create([
                 'name' => $name,
             ]);
