@@ -8,7 +8,6 @@ use App\Livewire\Genders\CreateGender;
 use App\Livewire\Genders\EditGender;
 use App\Livewire\Genders\ListGenders;
 use App\Livewire\Home;
-use App\Livewire\ManageGenders;
 use App\Livewire\Regattas\CreateRegatta;
 use App\Livewire\Regattas\EditRegatta;
 use App\Livewire\Regattas\ListRegattas;
