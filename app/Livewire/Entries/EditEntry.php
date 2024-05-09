@@ -8,7 +8,6 @@ use App\Models\Entry;
 use App\Models\Team;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\UniqueConstraintViolationException;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
