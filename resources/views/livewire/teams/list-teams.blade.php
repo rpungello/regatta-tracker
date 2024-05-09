@@ -10,6 +10,10 @@
         <x-team-badge :team="$team" />
         @endscope
 
+        @scope('cell_athletes', $team)
+        {{ number_format($team->athletes()->count()) }}
+        @endscope
+
         @scope('actions', $team)
         <x-button icon="o-pencil" link="{{ route('teams.edit', ['team' => $team]) }}"/>
         @endscope
