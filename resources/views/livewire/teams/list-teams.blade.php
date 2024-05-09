@@ -7,9 +7,7 @@
 
     <x-table :headers="$headers" :rows="$teams" :sort-by="$sortBy">
         @scope('cell_name', $team)
-        <span class="badge font-bold" style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }}">
-            {{ $team->name }}
-        </span>
+        <x-team-badge :team="$team" />
         @endscope
 
         @scope('actions', $team)
