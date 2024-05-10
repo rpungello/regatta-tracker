@@ -40,8 +40,9 @@ class AddEntry extends Component
 
     public function save(): void
     {
-        $this->event->entries()->create($this->validate());
-
-        $this->redirectRoute('events.edit', $this->event);
+        $this->redirectRoute(
+            'entries.edit',
+            $this->event->entries()->create($this->validate())
+        );
     }
 }
