@@ -20,6 +20,9 @@ use App\Livewire\Teams\AddAthlete;
 use App\Livewire\Teams\CreateTeam;
 use App\Livewire\Teams\EditTeam;
 use App\Livewire\Teams\ListTeams;
+use App\Livewire\Venues\CreateVenue;
+use App\Livewire\Venues\EditVenue;
+use App\Livewire\Venues\ListVenues;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +51,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/event-classes', ListEventClasses::class)->name('event-classes.list');
     Route::get('/event-classes/create', CreateEventClass::class)->name('event-classes.create');
     Route::get('/event-classes/{class}/edit', EditEventClass::class)->name('event-classes.edit');
+
+    Route::get('/venues', ListVenues::class)->name('venues.list');
+    Route::get('/venues/create', CreateVenue::class)->name('venues.create');
+    Route::get('/venues/{venue}/edit', EditVenue::class)->name('venues.edit');
 
     Route::get('/teams', ListTeams::class)->name('teams.list');
     Route::get('/teams/create', CreateTeam::class)->name('teams.create');
