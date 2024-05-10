@@ -19,7 +19,7 @@
                   label="{{ __('Boat Class') }}" placeholder="- Select a Class -"/>
         <x-input wire:model="name" label="{{ __('Name') }}"/>
         <x-input wire:model="code" label="{{ __('Code') }}"/>
-        <x-input wire:model="distance" label="{{ __('Distance') }}" suffix="m" />
+        <x-input wire:model="distance" label="{{ __('Distance') }}" suffix="m" type="number" />
 
         <x-button type="submit" class="btn-primary" label="{{ __('Create') }}"/>
     </x-form>
