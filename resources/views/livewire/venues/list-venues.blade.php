@@ -17,5 +17,5 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('venues.create') }}" label="{{ __('Create') }}" class="btn-primary hidden md:inline-flex"/>
+    <x-button link="{{ route('venues.create') }}" label="{{ __('Add Venue') }}" class="btn-primary hidden md:inline-flex"/>
 </div>

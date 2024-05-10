@@ -29,5 +29,5 @@
     </div>
 
 
-    <x-button link="{{ route('regattas.create') }}" label="{{ __('Create') }}" class="btn-primary hidden md:inline-flex"/>
+    <x-button link="{{ route('regattas.create') }}" label="{{ __('Add Regatta') }}" class="btn-primary hidden md:inline-flex"/>
 </div>

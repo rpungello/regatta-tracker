@@ -19,5 +19,5 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('teams.create') }}" label="{{ __('Create') }}" class="btn-primary"/>
+    <x-button link="{{ route('teams.create') }}" label="{{ __('Add Team') }}" class="btn-primary"/>
 </div>

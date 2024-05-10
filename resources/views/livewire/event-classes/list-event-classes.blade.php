@@ -17,5 +17,5 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('event-classes.create') }}" label="{{ __('Create') }}" class="btn-primary hidden md:inline-flex"/>
+    <x-button link="{{ route('event-classes.create') }}" label="{{ __('Add Event Class') }}" class="btn-primary hidden md:inline-flex"/>
 </div>

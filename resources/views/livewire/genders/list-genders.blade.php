@@ -17,5 +17,5 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('genders.create') }}" label="{{ __('Create') }}" class="btn-primary hidden md:inline-flex"/>
+    <x-button link="{{ route('genders.create') }}" label="{{ __('Add Gender') }}" class="btn-primary hidden md:inline-flex"/>
 </div>

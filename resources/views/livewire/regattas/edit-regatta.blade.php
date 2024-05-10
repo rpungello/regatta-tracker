@@ -14,7 +14,7 @@
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
     </x-form>
 
-    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Create') }}"
+    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Add Event') }}"
               class="btn-primary"/>
 
     <x-table :headers="$eventHeaders" :rows="$regatta->events">
@@ -35,6 +35,6 @@
         @endscope
     </x-table>
 
-    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Create') }}"
+    <x-button link="{{ route('events.create', ['regatta' => $regatta]) }}" label="{{ __('Add Event') }}"
               class="btn-primary"/>
 </div>
