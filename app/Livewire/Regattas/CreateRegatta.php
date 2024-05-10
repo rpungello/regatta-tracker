@@ -19,6 +19,9 @@ class CreateRegatta extends Component
     #[Validate(['required', 'date'])]
     public ?string $date = null;
 
+    #[Validate(['nullable', 'int', 'min:0'])]
+    public ?int $default_distance;
+
     public function render(): View
     {
         return view('livewire.regattas.create-regatta', [
