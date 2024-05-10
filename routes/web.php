@@ -66,8 +66,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/regattas/create', CreateRegatta::class)->name('regattas.create');
     Route::get('/regattas/{regatta}/edit', EditRegatta::class)->name('regattas.edit');
     Route::get('/regattas/{regatta}/view', ViewRegatta::class)->name('regattas.view');
+    Route::get('/regattas/{regatta}/add-event', CreateEvent::class)->name('events.create');
 
-    Route::get('/events/create', CreateEvent::class)->name('events.create');
     Route::get('/events/{event}/edit', EditEvent::class)->name('events.edit');
     Route::get('/events/{event}/add-entry', AddEntry::class)->name('events.add-entry');
     Route::get('/entries/{entry}/edit', EditEntry::class)->name('entries.edit');

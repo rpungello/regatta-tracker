@@ -10,6 +10,7 @@
     <x-form class="max-w-md mb-4" wire:submit.prevent="save">
         <x-input wire:model="name" label="{{ __('Name') }}"/>
         <x-input wire:model="date" label="{{ __('Date') }}" type="date"/>
+        <x-input wire:model="default_distance" label="{{ __('Default Distance') }}"/>
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
     </x-form>

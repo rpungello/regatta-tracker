@@ -16,6 +16,11 @@ class Regatta extends Model
         'venue_id',
         'name',
         'date',
+        'default_distance',
+    ];
+
+    protected $casts = [
+        'default_distance' => 'int',
     ];
 
     public function venue(): BelongsTo

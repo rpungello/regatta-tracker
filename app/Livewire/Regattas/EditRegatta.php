@@ -17,11 +17,15 @@ class EditRegatta extends Component
     #[Validate(['required', 'date'])]
     public string $date;
 
+    #[Validate(['nullable', 'int', 'min:0'])]
+    public ?int $default_distance;
+
     public function mount(Regatta $regatta): void
     {
         $this->regatta = $regatta;
         $this->name = $regatta->name;
         $this->date = $regatta->date->format('Y-m-d');
+        $this->default_distance = $regatta->default_distance;
     }
 
     public function render(): View

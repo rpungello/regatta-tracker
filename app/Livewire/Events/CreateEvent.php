@@ -10,8 +10,6 @@ use App\Models\Regatta;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 
 class CreateEvent extends Component
 {
@@ -41,13 +39,9 @@ class CreateEvent extends Component
     #[Validate(['required', 'exists:boat_classes,id'])]
     public int $boat_class_id;
 
-    /**
-     * @throws ContainerExceptionInterface
-     * @throws NotFoundExceptionInterface
-     */
     public function mount(): void
     {
-        $this->regatta = Regatta::findOrFail(request()->get('regatta'));
+        $this->distance = $this->regatta->default_distance;
     }
 
     public function render(): View
