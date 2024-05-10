@@ -34,8 +34,6 @@ class EditRegatta extends Component
     public function save(): void
     {
         $this->regatta->update($this->validate());
-
-        $this->redirectRoute('regattas.list');
     }
 
     private function getEventHeaders(): array
