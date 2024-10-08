@@ -1,16 +1,7 @@
-version: "3.8"
 services:
-  web:
-    image: rpungello/laravel-nginx
-    ports:
-      - "${WEB_PORT:-80}:80"
-    volumes:
-      - ".:/var/www/html"
-    restart: unless-stopped
-    depends_on:
-      - app
-  app:
-    image: rpungello/laravel-app:8.3
-    volumes:
-      - ".:/var/www/html"
-    restart: unless-stopped
+    app:
+        image: "public.ecr.aws/c3i7i9t1/regatta-tracker:${IMAGE_TAG:-latest}"
+        ports:
+            - "${WEB_PORT:-80}:80"
+        restart: unless-stopped
+        env_file: rt.env
