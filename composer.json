@@ -1,11 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "rpungello/regatta-tracker",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "version": "1.0.0",
+    "description": "Application for tracking regatta entries",
+    "keywords": ["rowing", "regatta", "aviron"],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.0",
         "laravel/scout": "^10.9",
