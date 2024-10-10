@@ -33,6 +33,7 @@ class ListRegattas extends Component
 
     private function regattas(): Collection
     {
-        return Regatta::orderBy(...array_values($this->sortBy))->get();
+        return Regatta::where('date', '>=', now()->subMonths(2))
+            ->orderBy(...array_values($this->sortBy))->get();
     }
 }
