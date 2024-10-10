@@ -14,10 +14,10 @@ class AddEntry extends Component
     public Event $event;
 
     #[Validate(['required', 'exists:teams,id'])]
-    public int $team_id;
+    public ?int $team_id = null;
 
     #[Validate(['required', 'integer', 'min:1'])]
-    public int $bow_number;
+    public ?int $bow_number = null;
 
     #[Validate(['required'])]
     public Priority $priority;
@@ -38,11 +38,20 @@ class AddEntry extends Component
         ]);
     }
 
-    public function save(): void
+    public function save(bool $addAnother = false): void
     {
-        $this->redirectRoute(
-            'entries.edit',
-            $this->event->entries()->create($this->validate())
-        );
+        $entry = $this->event->entries()->create($this->validate());
+
+        if ($addAnother) {
+            $this->team_id = null;
+            $this->bow_number = null;
+            $this->priority = Priority::Normal;
+            $this->notes = null;
+        } else {
+            $this->redirectRoute(
+                'entries.edit',
+                $entry
+            );
+        }
     }
 }

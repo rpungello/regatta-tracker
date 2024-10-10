@@ -15,5 +15,6 @@
         <x-input wire:model="notes" label="{{ __('Notes') }}" />
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
+        <x-button type="button" wire:click="save(true)" class="btn-primary" label="{{ __('Add Another') }}"/>
     </x-form>
 </div>
