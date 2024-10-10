@@ -39,6 +39,6 @@ docker buildx build \
        --no-cache \
        --build-arg VERSION="$VERSION" \
        --platform=linux/amd64,linux/arm64/v8 \
-       --tag "public.ecr.aws/c3i7i9t1/regatta-tracker:${VERSION}" \
-       --tag "public.ecr.aws/c3i7i9t1/regatta-tracker:latest" \
+       --tag "public.ecr.aws/rpungello/regatta-tracker:${VERSION}" \
+       --tag "public.ecr.aws/rpungello/regatta-tracker:latest" \
        --push .

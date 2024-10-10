@@ -1,6 +1,6 @@
 services:
     app:
-        image: "public.ecr.aws/c3i7i9t1/regatta-tracker:${IMAGE_TAG:-latest}"
+        image: "public.ecr.aws/rpungello/regatta-tracker:${IMAGE_TAG:-latest}"
         ports:
             - "${WEB_PORT:-80}:80"
         restart: unless-stopped
