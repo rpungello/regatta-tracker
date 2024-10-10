@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-    use HasFactory, SoftDeletes, NullableFields;
+    use HasFactory, NullableFields, SoftDeletes;
 
     protected $fillable = [
         'regatta_id',
