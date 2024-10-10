@@ -5,6 +5,8 @@
         </ul>
     </div>
 
+    <x-button link="{{ route('regattas.create') }}" label="{{ __('Add Regatta') }}" class="btn-primary hidden md:inline-flex"/>
+
     <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy" class="hidden md:table">
         @scope('cell_date', $regatta)
         {{ $regatta->date->format('D, F j, Y') }}
