@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Priority;
+use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -12,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, NullableFields;
 
     protected $fillable = [
         'regatta_id',
@@ -29,6 +30,12 @@ class Event extends Model
     protected $casts = [
         'time' => 'datetime',
         'distance' => 'int',
+    ];
+
+    protected array $nullable = [
+        'name',
+        'code',
+        'distance',
     ];
 
     public function regatta(): BelongsTo
