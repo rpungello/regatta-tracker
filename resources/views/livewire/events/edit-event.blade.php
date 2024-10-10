@@ -22,6 +22,7 @@
         <x-input wire:model="distance" label="{{ __('Distance') }}" suffix="m" type="number" />
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
+        <x-button type="button" wire:click="save(true)" class="btn-primary" label="Save & Back"/>
     </x-form>
 
     <x-table :headers="$entryHeaders" :rows="$event->entries">

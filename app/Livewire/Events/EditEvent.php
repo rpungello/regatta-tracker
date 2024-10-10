@@ -78,17 +78,19 @@ class EditEvent extends Component
         ];
     }
 
-    public function save(): void
+    public function save(bool $redirect = false): void
     {
         $this->event->update(array_merge(
             $this->validate(),
             ['time' => "{$this->regatta->date->format('Y-m-d')} $this->time"]
         ));
 
-        $this->redirectRoute(
-            'regattas.edit',
-            $this->regatta
-        );
+        if ($redirect) {
+            $this->redirectRoute(
+                'regattas.edit',
+                $this->regatta
+            );
+        }
     }
 
     public function removeEntry(int $entryId): void
