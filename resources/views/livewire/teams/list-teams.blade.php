@@ -5,6 +5,8 @@
         </ul>
     </div>
 
+    <x-button link="{{ route('teams.create') }}" label="{{ __('Add Team') }}" class="btn-primary"/>
+
     <x-table :headers="$headers" :rows="$teams" :sort-by="$sortBy">
         @scope('cell_name', $team)
         <x-team-badge :team="$team" />
