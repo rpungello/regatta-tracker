@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Priority;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,9 +29,17 @@ class Regatta extends Model
         return $this->belongsTo(Venue::class);
     }
 
-    public function events(): HasMany
+    public function events(bool $excludeLowPriority = false): HasMany
     {
-        return $this->hasMany(Event::class)->orderBy('time');
+        if ($excludeLowPriority) {
+            return $this->hasMany(Event::class)
+                ->whereHas('entries', function ($query) {
+                    $query->where('priority', '!=', Priority::Low);
+                })
+                ->orderBy('time');
+        } else {
+            return $this->hasMany(Event::class)->orderBy('time');
+        }
     }
 
     public function getShortDateAttribute(): string

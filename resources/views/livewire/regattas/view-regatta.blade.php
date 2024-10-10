@@ -7,8 +7,10 @@
         <h2 class="opacity-50">{{ $regatta->date->format('l, F j, Y') }}</h2>
     </div>
 
+    <x-checkbox label="Exclude low priority" wire:model.live="excludeLowPriority" class="mb-4" />
+
     <div class="flex flex-col space-y-4">
-        @foreach($regatta->events()->orderBy('time')->orderBy('id')->get() as $event)
+        @foreach($this->getEvents() as $event)
             <x-card>
                 <div class="flex flex-row items-center justify-between">
                     <div class="flex flex-col">
@@ -38,11 +40,11 @@
                 </div>
             </x-card>
 
-            @if(! $event->isLastEvent())
+            @if(! $event->isLastEvent($excludeLowPriority))
                 <div
-                    class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent() >= 30) text-success @elseif ($event->getMinutesUntilNextEvent() === 0) text-warning @endif">
+                    class="flex flex-row items-center space-x-2 @if($event->getMinutesUntilNextEvent($excludeLowPriority) >= 30) text-success @elseif ($event->getMinutesUntilNextEvent($excludeLowPriority) === 0) text-warning @endif">
                     <x-icon name="o-clock"/>
-                    <span>{{ $event->getTimeUntilNextEvent() }}</span>
+                    <span>{{ $event->getTimeUntilNextEvent($excludeLowPriority) }}</span>
                 </div>
             @endif
         @endforeach

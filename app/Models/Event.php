@@ -89,15 +89,15 @@ class Event extends Model
         return $priority;
     }
 
-    public function isLastEvent(): bool
+    public function isLastEvent(bool $excludeLowPriority = false): bool
     {
-        return $this->regatta->events()->where('time', '>', $this->time)->doesntExist();
+        return $this->regatta->events($excludeLowPriority)->where('time', '>', $this->time)->doesntExist();
     }
 
-    public function getTimeUntilNextEvent(): ?string
+    public function getTimeUntilNextEvent(bool $excludeLowPriority = false): ?string
     {
         /** @var Event|null $nextEvent */
-        $nextEvent = $this->getNextEvent();
+        $nextEvent = $this->getNextEvent($excludeLowPriority);
 
         if (is_null($nextEvent)) {
             return null;
@@ -106,13 +106,13 @@ class Event extends Model
         return $this->time->diffForHumans($nextEvent->time, true, parts: 2);
     }
 
-    private function getNextEvent(): ?Event
+    private function getNextEvent(bool $excludeLowPriority = false): ?Event
     {
         if ($this->hasParallelEvents()) {
             try {
                 return $this
                     ->regatta
-                    ->events()
+                    ->events($excludeLowPriority)
                     ->where('time', '=', $this->time)
                     ->where('id', '>', $this->getKey())
                     ->orderBy('time')
@@ -123,7 +123,7 @@ class Event extends Model
 
         return $this
             ->regatta
-            ->events()
+            ->events($excludeLowPriority)
             ->where('time', '>', $this->time)
             ->orderBy('time')
             ->firstOrFail();
@@ -134,10 +134,10 @@ class Event extends Model
         return $this->regatta->events()->where('time', '=', $this->time)->count() > 1;
     }
 
-    public function getMinutesUntilNextEvent(): ?int
+    public function getMinutesUntilNextEvent(bool $excludeLowPriority = false): ?int
     {
         /** @var Event|null $nextEvent */
-        $nextEvent = $this->getNextEvent();
+        $nextEvent = $this->getNextEvent($excludeLowPriority);
 
         if (is_null($nextEvent)) {
             return null;
