@@ -16,5 +16,6 @@
 
         <x-button type="submit" class="btn-primary" label="{{ __('Save') }}"/>
         <x-button type="button" wire:click="save(true)" class="btn-primary" label="{{ __('Add Another') }}"/>
+        <x-button type="button" wire:click="save(false, true)" class="btn-primary" label="{{ __('Return to Regatta') }}"/>
     </x-form>
 </div>

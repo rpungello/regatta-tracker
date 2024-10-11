@@ -38,7 +38,7 @@ class AddEntry extends Component
         ]);
     }
 
-    public function save(bool $addAnother = false): void
+    public function save(bool $addAnother = false, bool $returnToRegatta = false): void
     {
         $entry = $this->event->entries()->create($this->validate());
 
@@ -47,6 +47,8 @@ class AddEntry extends Component
             $this->bow_number = null;
             $this->priority = Priority::Normal;
             $this->notes = null;
+        } elseif ($returnToRegatta) {
+            $this->redirectRoute('regattas.edit', $this->event->regatta);
         } else {
             $this->redirectRoute(
                 'entries.edit',
