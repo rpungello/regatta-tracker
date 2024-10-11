@@ -21,6 +21,7 @@
         <x-input wire:model="code" label="{{ __('Code') }}"/>
         <x-input wire:model="distance" label="{{ __('Distance') }}" suffix="m" type="number" />
 
-        <x-button type="submit" class="btn-primary" label="{{ __('Create') }}"/>
+        <x-button type="submit" class="btn-primary" label="{{ __('Add Entry') }}"/>
+        <x-button type="button" wire:click="save(false)" class="btn-primary" label="{{ __('Create') }}"/>
     </x-form>
 </div>

@@ -54,16 +54,25 @@ class CreateEvent extends Component
         ]);
     }
 
-    public function save(): void
+    public function save(bool $addEntry = true): void
     {
-        $this->redirectRoute(
-            'events.edit',
-            $this->regatta->events()->create(
-                array_merge(
-                    $this->validate(),
-                    ['time' => "{$this->regatta->date->format('Y-m-d')} $this->time"]
-                )
+        $event = $this->regatta->events()->create(
+            array_merge(
+                $this->validate(),
+                ['time' => "{$this->regatta->date->format('Y-m-d')} $this->time"]
             )
         );
+
+        if ($addEntry) {
+            $this->redirectRoute(
+                'events.add-entry',
+                $event
+            );
+        } else {
+            $this->redirectRoute(
+                'events.edit',
+                $event
+            );
+        }
     }
 }
