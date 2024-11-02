@@ -3,7 +3,7 @@
     'entry',
 ])
 
-<div class="rounded-xl px-2.5 py-1.5 space-x-1 flex flex-row items-center transition-opacity duration-200 @if(isset($entry) && $entry->complete) opacity-40 @endif"
+<div class="rounded-xl px-2.5 py-1.5 space-x-1 flex flex-row items-center transition-opacity @if(isset($entry) && $entry->complete) opacity-40 @endif"
      style="background-color: #{{ $team->brand_color_primary }}; color: #{{ $team->brand_color_secondary }};">
     @if(isset($entry))
         <span class="mr-2">{{ $entry->bow_number }}</span>
