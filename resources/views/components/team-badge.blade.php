@@ -1,6 +1,6 @@
 @props([
     'team',
-    'entry' => null,
+    'entry',
 ])
 
 <div class="rounded-xl px-2.5 py-1.5 space-x-1 flex flex-row items-center transition-opacity duration-200 @if(isset($entry) && $entry->complete) opacity-40 @endif"
@@ -18,6 +18,8 @@
         @endisset
     </div>
 
-    <x-icon name="s-check-badge" :class="$entry?->complete !== true ? 'opacity-0' : ''" />
+    @isset($entry)
+        <x-icon name="s-check-badge" :class="$entry->complete === false ? 'opacity-0' : ''" />
+    @endisset
 
 </div>
