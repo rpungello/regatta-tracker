@@ -18,6 +18,6 @@
         @endisset
     </div>
 
-    <x-icon name="s-check-badge" :class="$entry?->complete === false ? 'opacity-0' : ''" />
+    <x-icon name="s-check-badge" :class="$entry?->complete !== true ? 'opacity-0' : ''" />
 
 </div>
