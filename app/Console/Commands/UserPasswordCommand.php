@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
+
 use function Laravel\Prompts\password;
 
 class UserPasswordCommand extends Command
@@ -34,6 +35,7 @@ class UserPasswordCommand extends Command
         ]);
 
         $this->info('Password updated successfully');
+
         return static::SUCCESS;
     }
 }
