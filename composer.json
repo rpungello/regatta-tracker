@@ -1,7 +1,7 @@
 {
     "name": "rpungello/regatta-tracker",
     "type": "project",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Application for tracking regatta entries",
     "keywords": [
         "rowing",
