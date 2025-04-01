@@ -19,7 +19,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "meilisearch/meilisearch-php": "^1.8",
-        "robsontenorio/mary": "^1.30"
+        "robsontenorio/mary": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
