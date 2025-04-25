@@ -17,6 +17,7 @@ use DOMXPath;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use RuntimeException;
+
 use function Laravel\Prompts\confirm;
 
 class ImportRowtownCommand extends Command
@@ -31,7 +32,7 @@ class ImportRowtownCommand extends Command
         $regatta = Regatta::findOrFAil($this->argument('regatta'));
         $team = Team::findOrFAil($this->argument('team'));
 
-        if (!confirm("Import $regatta->name entries for $team->name?")) {
+        if (! confirm("Import $regatta->name entries for $team->name?")) {
             return static::SUCCESS;
         }
 
@@ -49,7 +50,7 @@ class ImportRowtownCommand extends Command
             throw new RuntimeException('Missing organizationName in query string');
         }
 
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         $dom->loadHTMLFile($url);
         $x = new DOMXPath($dom);
         $teamDisplayName = $x->query('//select[@name="organizationName"]/option[@selected]')->item(0)->nodeValue;
@@ -58,7 +59,7 @@ class ImportRowtownCommand extends Command
         $entries = collect();
 
         /** @var DOMElement $e */
-        foreach($events as $e) {
+        foreach ($events as $e) {
             $timeNode = $x->query('td[3]', $e)->item(0);
             $eventNode = $x->query('td[4]/a', $e)->item(0);
             $entries = $entries->merge(
@@ -88,7 +89,7 @@ class ImportRowtownCommand extends Command
     {
         $this->info("Importing event $eventName");
 
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         $dom->loadHTMLFile($url);
         $x = new DOMXPath($dom);
 
@@ -104,7 +105,7 @@ class ImportRowtownCommand extends Command
                 $bow = $x->query('td[2]', $e)->item(0)->nodeValue;
                 $result->push($event->entries()->create([
                     'team_id' => $team->getKey(),
-                    'bow_number' =>  $bow,
+                    'bow_number' => $bow,
                 ]));
             }
         }
@@ -120,12 +121,12 @@ class ImportRowtownCommand extends Command
         $raceType = $this->parseRaceType($eventName);
 
         return Event::firstOrCreate([
-            'regatta_id' =>  $regatta->getKey(),
-            'gender_id' =>   $gender->getKey(),
+            'regatta_id' => $regatta->getKey(),
+            'gender_id' => $gender->getKey(),
             'event_class_id' => $eventClass->getKey(),
             'boat_class_id' => $boatClass->getKey(),
-            'race_type_id' =>  $raceType->getKey(),
-            'time' =>  $time,
+            'race_type_id' => $raceType->getKey(),
+            'time' => $time,
         ], [
             'name' => $eventName,
         ]);
@@ -146,7 +147,7 @@ class ImportRowtownCommand extends Command
 
     private function parseEventClass(string $eventName): EventClass
     {
-        if (preg_match('/U(15|16|17)/',$eventName, $matches)) {
+        if (preg_match('/U(15|16|17)/', $eventName, $matches)) {
             return EventClass::whereName($matches[0])->firstOrFail();
         } elseif (preg_match('/jv|2v/i', $eventName)) {
             return EventClass::whereName('2V')->firstOrFail();
