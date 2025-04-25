@@ -11,6 +11,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "ext-dom": "*",
+        "ext-libxml": "*",
         "dyrynda/laravel-nullable-fields": "^4.4",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.0",
