@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.4.4 - 2025-07-15
+
+Default to coxed fours
+
 ## 1.4.3 - 2025-07-15
 
 Improve Rowtown matching
