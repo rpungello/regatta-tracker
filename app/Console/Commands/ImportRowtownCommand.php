@@ -147,7 +147,7 @@ class ImportRowtownCommand extends Command
 
     private function parseEventClass(string $eventName): EventClass
     {
-        if (preg_match('/U(15|16|17)/', $eventName, $matches)) {
+        if (preg_match('/U(15|16|17|23)/', $eventName, $matches)) {
             return EventClass::whereName($matches[0])->firstOrFail();
         } elseif (preg_match('/jv|2v/i', $eventName)) {
             return EventClass::whereName('2V')->firstOrFail();
@@ -160,11 +160,33 @@ class ImportRowtownCommand extends Command
 
     private function parseBoatClass(string $eventName): BoatClass
     {
-        if (preg_match('/\d[x+-]+/', $eventName, $matches)) {
+        if (preg_match('/single/i', $eventName)) {
+            return BoatClass::whereCode('1x')->firstOrFail();
+        } elseif (preg_match('/double/i', $eventName)) {
+            return BoatClass::whereCode('2x')->firstOrFail();
+        } elseif (preg_match('/pair/i', $eventName)) {
+            return BoatClass::whereCode('2-')->firstOrFail();
+        } elseif (preg_match('/eight/i', $eventName)) {
+            return BoatClass::whereCode('8+')->firstOrFail();
+        } elseif (preg_match('/octuple/i', $eventName)) {
+            return BoatClass::whereCode('8x')->firstOrFail();
+        } elseif (preg_match('/\d[x+-]+/', $eventName, $matches)) {
             return BoatClass::whereCode($matches[0])->firstOrFail();
         }
 
-        throw new RuntimeException("Unable to parse boat class: $eventName");
+        if (preg_match('/four/i', $eventName)) {
+            $classCode = '4';
+        } elseif (preg_match('/quad/i', $eventName)) {
+            $classCode = '4x';
+        } else {
+            throw new RuntimeException("Unable to parse boat class: $eventName");
+        }
+
+        if (preg_match('/cox/i', $eventName)) {
+            $classCode = "$classCode+";
+        }
+
+        return BoatClass::whereCode($classCode)->firstOrFail();
     }
 
     private function parseRaceType(string $eventName): RaceType
