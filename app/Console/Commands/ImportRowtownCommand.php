@@ -166,6 +166,18 @@ class ImportRowtownCommand extends Command
             return BoatClass::whereCode('2x')->firstOrFail();
         } elseif (preg_match('/pair/i', $eventName)) {
             return BoatClass::whereCode('2-')->firstOrFail();
+        } elseif (preg_match('/four/i', $eventName)) {
+            if (preg_match('/straight/i', $eventName)) {
+                return BoatClass::whereCode('4-')->firstOrFail();
+            } else {
+                return BoatClass::whereCode('4+')->firstOrFail();
+            }
+        } elseif (preg_match('/quad/i', $eventName)) {
+            if (preg_match('/cox/i', $eventName)) {
+                return BoatClass::whereCode('4+')->firstOrFail();
+            } else {
+                return BoatClass::whereCode('4x')->firstOrFail();
+            }
         } elseif (preg_match('/eight/i', $eventName)) {
             return BoatClass::whereCode('8+')->firstOrFail();
         } elseif (preg_match('/octuple/i', $eventName)) {
@@ -174,19 +186,7 @@ class ImportRowtownCommand extends Command
             return BoatClass::whereCode($matches[0])->firstOrFail();
         }
 
-        if (preg_match('/four/i', $eventName)) {
-            $classCode = '4';
-        } elseif (preg_match('/quad/i', $eventName)) {
-            $classCode = '4x';
-        } else {
-            throw new RuntimeException("Unable to parse boat class: $eventName");
-        }
-
-        if (preg_match('/cox/i', $eventName)) {
-            $classCode = "$classCode+";
-        }
-
-        return BoatClass::whereCode($classCode)->firstOrFail();
+        throw new RuntimeException("Unable to parse boat class: $eventName");
     }
 
     private function parseRaceType(string $eventName): RaceType
