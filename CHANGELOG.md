@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.4.3 - 2025-07-15
+
+Improve Rowtown matching
+
 ## 1.4.2 - 2025-07-04
 
 Fixes for new CI pipeline
