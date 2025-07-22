@@ -2,6 +2,11 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.4.5 - 2025-07-22
+
+- Fix CVE-2025-54068
+- Fix CVE-2025-7783
+
 ## 1.4.4 - 2025-07-15
 
 Default to coxed fours
