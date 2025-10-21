@@ -15,13 +15,13 @@
         "ext-libxml": "*",
         "dyrynda/laravel-nullable-fields": "^4.4",
         "laravel/fortify": "^1.21",
-        "laravel/framework": "^11.0",
+        "laravel/framework": "^12.0",
         "laravel/prompts": "^0.3.5",
         "laravel/scout": "^10.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "meilisearch/meilisearch-php": "^1.8",
-        "robsontenorio/mary": "^1.0"
+        "robsontenorio/mary": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

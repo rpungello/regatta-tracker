@@ -1,4 +1,4 @@
-FROM rpungello/laravel-franken:8.3
+FROM ghcr.io/rpungello/laravel-frankenphp:php8.4
 
 ARG VERSION=1.0.0
 ENV APP_VERSION=${VERSION}
