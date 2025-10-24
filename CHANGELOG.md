@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.5.1 - 2025-10-24
+
+Fix migration
+
 ## 1.5.0 - 2025-10-24
 
 - Upgrade to Laravel 12
