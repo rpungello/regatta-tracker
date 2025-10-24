@@ -17,6 +17,8 @@ class Regatta extends Model
         'venue_id',
         'name',
         'date',
+        'default_race_type_id',
+        'default_event_class_id',
         'default_distance',
     ];
 
@@ -27,6 +29,16 @@ class Regatta extends Model
     public function venue(): BelongsTo
     {
         return $this->belongsTo(Venue::class);
+    }
+
+    public function defaultRaceType(): BelongsTo
+    {
+        return $this->belongsTo(RaceType::class);
+    }
+
+    public function defaultEventClass(): BelongsTo
+    {
+        return $this->belongsTo(EventClass::class);
     }
 
     public function events(bool $excludeLowPriority = false): HasMany

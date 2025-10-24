@@ -34,13 +34,15 @@ class CreateEvent extends Component
     public int $gender_id;
 
     #[Validate(['required', 'exists:event_classes,id'])]
-    public int $event_class_id;
+    public ?int $event_class_id;
 
     #[Validate(['required', 'exists:boat_classes,id'])]
     public int $boat_class_id;
 
     public function mount(): void
     {
+        $this->race_type_id = $this->regatta->default_race_type_id;
+        $this->event_class_id = $this->regatta->default_event_class_id;
         $this->distance = $this->regatta->default_distance;
     }
 

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Regattas;
 
+use App\Models\EventClass;
+use App\Models\RaceType;
 use App\Models\Regatta;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Validate;
@@ -17,6 +19,12 @@ class EditRegatta extends Component
     #[Validate(['required', 'date'])]
     public string $date;
 
+    #[Validate(['nullable', 'exists:race_types,id'])]
+    public ?int $default_race_type_id;
+
+    #[Validate(['nullable', 'exists:event_classes,id'])]
+    public ?int $default_event_class_id;
+
     #[Validate(['nullable', 'int', 'min:0'])]
     public ?int $default_distance;
 
@@ -25,12 +33,16 @@ class EditRegatta extends Component
         $this->regatta = $regatta;
         $this->name = $regatta->name;
         $this->date = $regatta->date->format('Y-m-d');
+        $this->default_race_type_id = $regatta->default_race_type_id;
+        $this->default_event_class_id = $regatta->default_event_class_id;
         $this->default_distance = $regatta->default_distance;
     }
 
     public function render(): View
     {
         return view('livewire.regattas.edit-regatta', [
+            'raceTypes' => RaceType::orderBy('name')->get(),
+            'eventClasses' => EventClass::orderBy('name')->get(),
             'eventHeaders' => $this->getEventHeaders(),
         ]);
     }
