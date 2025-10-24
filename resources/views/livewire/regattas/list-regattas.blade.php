@@ -7,22 +7,24 @@
 
     <x-button link="{{ route('regattas.create') }}" label="{{ __('Add Regatta') }}" class="btn-primary hidden md:inline-flex"/>
 
-    <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy" class="hidden md:table">
-        @scope('cell_date', $regatta)
-        {{ $regatta->date->format('D, F j, Y') }}
-        @endscope
+    <div class="hidden md:block">
+        <x-table :headers="$headers" :rows="$regattas" :sort-by="$sortBy">
+            @scope('cell_date', $regatta)
+            {{ $regatta->date->format('D, F j, Y') }}
+            @endscope
 
-        @scope('cell_created_at', $regatta)
-        {{ $regatta->created_at->diffForHumans() }}
-        @endscope
+            @scope('cell_created_at', $regatta)
+            {{ $regatta->created_at->diffForHumans() }}
+            @endscope
 
-        @scope('actions', $regatta)
-        <div class="flex flex-row">
-            <x-button icon="o-eye" link="{{ route('regattas.view', ['regatta' => $regatta]) }}"/>
-            <x-button icon="o-pencil" link="{{ route('regattas.edit', ['regatta' => $regatta]) }}"/>
-        </div>
-        @endscope
-    </x-table>
+            @scope('actions', $regatta)
+            <div class="flex flex-row">
+                <x-button icon="o-eye" link="{{ route('regattas.view', ['regatta' => $regatta]) }}"/>
+                <x-button icon="o-pencil" link="{{ route('regattas.edit', ['regatta' => $regatta]) }}"/>
+            </div>
+            @endscope
+        </x-table>
+    </div>
 
     <div class="block md:hidden">
         @foreach($regattas as $regatta)
