@@ -12,7 +12,7 @@ return new class extends Migration
     {
         Schema::table('regattas', function (Blueprint $table) {
             $table->foreignIdFor(RaceType::class, 'default_race_type_id')->after('date')->nullable()->constrained()->nullOnDelete();
-            $table->foreignIdFor(EventClass::class, 'default_event_class_id')->after('race_type_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(EventClass::class, 'default_event_class_id')->after('default_race_type_id')->nullable()->constrained()->nullOnDelete();
         });
     }
 
