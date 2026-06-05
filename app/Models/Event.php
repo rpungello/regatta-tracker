@@ -84,16 +84,15 @@ class Event extends Model
 
     public function getPriority(): Priority
     {
-        $priority = Priority::Low;
+        $priority = Priority::Low->getInteger();
+
         foreach ($this->entries as $entry) {
-            if ($entry->priority === Priority::High) {
-                return Priority::High;
-            } elseif ($entry->priority === Priority::Normal) {
-                $priority = Priority::Normal;
+            if ($entry->priority->getInteger() < $priority) {
+                $priority = $entry->priority->getInteger();
             }
         }
 
-        return $priority;
+        return Priority::fromInteger($priority);
     }
 
     public function isLastEvent(bool $excludeLowPriority = false): bool

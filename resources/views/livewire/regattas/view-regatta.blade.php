@@ -14,7 +14,7 @@
             <x-card>
                 <div class="flex flex-row items-center justify-between">
                     <div class="flex flex-col">
-                        @if($event->getPriority() === Priority::High)
+                        @if($event->getPriority() === Priority::High || $event->getPriority() === Priority::Client)
                             <strong class="text-error">{{ $event->getDescription() }}</strong>
                         @else
                             <span>{{ $event->getDescription() }}</span>
