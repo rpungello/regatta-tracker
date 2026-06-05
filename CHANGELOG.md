@@ -2,6 +2,12 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.6.0 - 2026-06-05
+
+- Update dependencies
+- Add Nightwatch
+- Add client priority level
+
 ## 1.5.3 - 2025-10-24
 
 Include MaryUI views in `app.css`
