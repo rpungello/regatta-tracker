@@ -2,6 +2,8 @@ FROM ghcr.io/rpungello/laravel-frankenphp:php8.4
 
 ARG VERSION=1.0.0
 ENV APP_VERSION=${VERSION}
+ENV NIGHTWATCH_INGEST_URI="nightwatch:2407"
+
 COPY . /app
 RUN composer install && npm install && npm run build \
  && chown -R www-data:www-data /app

@@ -16,6 +16,7 @@
         "dyrynda/laravel-nullable-fields": "^4.4",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^12.0",
+        "laravel/nightwatch": "^1.28",
         "laravel/prompts": "^0.3.5",
         "laravel/scout": "^10.9",
         "laravel/tinker": "^2.9",
