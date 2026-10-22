@@ -2,6 +2,10 @@
 
 All notable changes to `rpungello/regatta-tracker` will be documented in this file.
 
+## 1.7.0 - 2026-10-22
+
+Various security updates
+
 ## 1.6.0 - 2026-06-05
 
 - Update dependencies
