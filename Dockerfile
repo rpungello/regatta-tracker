@@ -1,4 +1,4 @@
-FROM ghcr.io/rpungello/laravel-frankenphp:php8.4
+FROM ghcr.io/rpungello/laravel-frankenphp:php8.4-trixie
 
 ARG VERSION=1.0.0
 ENV APP_VERSION=${VERSION}
